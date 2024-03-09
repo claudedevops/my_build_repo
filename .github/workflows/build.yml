@@ -39,7 +39,7 @@ jobs:
       - run: echo "hello docker"
   
   trivy:
-    needs: [ setup, docker ]
+    needs: [ docker, setup ]
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello trivy"
