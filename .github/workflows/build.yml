@@ -34,7 +34,7 @@ jobs:
   
   apply:
     needs: plan
-    #if: success
+    if: success
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
