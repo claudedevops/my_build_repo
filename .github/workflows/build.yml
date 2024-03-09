@@ -19,11 +19,11 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello checkov"
+      - run: echoo "hello checkov"
   
   plan:
     needs: checkov
-    if: success
+    if: success()
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -34,7 +34,7 @@ jobs:
   
   apply:
     needs: plan
-    if: success
+    if: success()
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
