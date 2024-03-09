@@ -10,26 +10,31 @@ jobs:
       - run: echo "hello build"
       
   setup:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello setup"
   
   checkov:
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello checkov"
   
   plan:
+    needs: checkov
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello plan"
   
   apply:
+    needs: plan
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello apply"
   
   docker:
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello docker"
