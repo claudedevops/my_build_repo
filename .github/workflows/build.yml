@@ -24,8 +24,12 @@ jobs:
   plan:
     needs: checkov
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        env: [ dev, stage, prod ]
     steps:
-      - run: echo "hello plan"
+      - run: echo ${{ matrix.env }}
   
   apply:
     needs: plan
