@@ -1,0 +1,35 @@
+name: build workflow
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello build"
+      
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello setup"
+  
+  checkov:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello checkov"
+  
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello plan"
+  
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello apply"
+  
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello docker"
