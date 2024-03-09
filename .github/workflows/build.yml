@@ -34,8 +34,12 @@ jobs:
   apply:
     needs: plan
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        env: [ dev, stage, prod ]
     steps:
-      - run: echo "hello apply"
+      - run: echo ${{ matrix.env }}
   
   docker:
     runs-on: ubuntu-latest
