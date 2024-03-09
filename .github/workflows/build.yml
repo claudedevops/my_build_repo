@@ -33,8 +33,7 @@ jobs:
       matrix:
         env: [ dev, stage, prod ]
     steps:
-      - run: echo ${{ matrix.env }}
-  
+      - run: terraform init
   apply:
     needs: plan
     if: success()
