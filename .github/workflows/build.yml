@@ -10,7 +10,7 @@ jobs:
       - run: echo "hello build"
       
   setup:
-    needs: build
+    needs: [ build, docker ]
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello setup"
@@ -34,7 +34,12 @@ jobs:
       - run: echo "hello apply"
   
   docker:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello docker"
+  
+  trivy:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello trivy"
