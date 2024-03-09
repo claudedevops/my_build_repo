@@ -22,6 +22,10 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+      - name: download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: test.tf
       - run: terraform fmt -check
   
   plan:
