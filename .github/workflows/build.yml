@@ -22,7 +22,7 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello checkov"
+      - run: terraform fmt -check
   
   plan:
     needs: checkov
