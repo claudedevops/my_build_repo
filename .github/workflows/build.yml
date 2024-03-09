@@ -19,7 +19,7 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - run: echoo "hello checkov"
+      - run: echo "hello checkov"
   
   plan:
     needs: checkov
