@@ -38,14 +38,7 @@ jobs:
       - run: terraform init
   apply:
     needs: plan
-    if: success()
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        env: [ dev, stage, prod ]
-    steps:
-      - run: echo ${{ matrix.env }}
+    uses: ./.github/workflows/release.yaml
   
   docker:
     runs-on: ubuntu-latest
