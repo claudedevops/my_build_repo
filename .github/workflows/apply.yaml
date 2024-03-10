@@ -20,7 +20,7 @@ jobs:
             echo "selected-stage=dev" >> "GITHUB_OUTPUT"
           elif [ ${{ inputs.target-env }} == stage ]; then
             echo "selected-stage=stage" >> "GITHUB_OUTPUT"
-          if [ ${{ inputs.target-env }} == prod ]; then
+          elif [ ${{ inputs.target-env }} == prod ]; then
             echo "selected-stage=prod" >> "GITHUB_OUTPUT"
           else
             echo "Select a valid environment"
