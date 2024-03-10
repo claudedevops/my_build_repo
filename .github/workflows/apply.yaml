@@ -16,11 +16,11 @@ jobs:
       - name: Choose environment
         id: select-environment  # an id is used to capture/access an output
         run: |
-          if [ ${{ inputs.target-env }} == dev ]; then
+          if [ ${{ inputs.target-env }} == 'dev' ]; then
             echo "selected-stage=dev" >> "$GITHUB_OUTPUT"
-          elif [ ${{ inputs.target-env }} == stage ]; then
+          elif [ ${{ inputs.target-env }} == 'stage' ]; then
             echo "selected-stage=stage" >> "$GITHUB_OUTPUT"
-          elif [ ${{ inputs.target-env }} == prod ]; then
+          elif [ ${{ inputs.target-env }} == 'prod' ]; then
             echo "selected-stage=prod" >> "$GITHUB_OUTPUT"
           else
             echo "Select a valid environment"
