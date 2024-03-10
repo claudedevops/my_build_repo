@@ -15,7 +15,7 @@ jobs:
       - run: echo "hello startup"
       
   setup:
-    needs: [ build, docker, startup ]
+    needs: [ build, docker ]
     uses: claudedevops/shared-workflows/.github/workflows/setup.yaml@main
   
   checkov:
@@ -23,7 +23,7 @@ jobs:
     uses: claudedevops/shared-workflows/.github/workflows/tests.yaml@main
   
   plan:
-    needs: checkov
+    needs: [ checkov, startup ]
     if: success()
     runs-on: ubuntu-latest
     strategy:
