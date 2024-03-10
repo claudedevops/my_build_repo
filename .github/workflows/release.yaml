@@ -7,7 +7,7 @@ on:
         type: environment
         description: Select the environment
         required: true
-        options: [ dev, stage, prod ]
+        options: [ stage, prod, dev ]
 
 jobs:
   release:
