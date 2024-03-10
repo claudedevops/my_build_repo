@@ -16,11 +16,11 @@ jobs:
       
   setup:
     needs: [ build, docker, startup ]
-    uses: ./.github/workflows/setup.yaml
+    uses: claudedevops/shared-workflows/.github/workflows/setup.yaml@main
   
   checkov:
     needs: setup
-    uses: ./.github/workflows/tests.yaml
+    uses: claudedevops/shared-workflows/.github/workflows/tests.yaml@main
   
   plan:
     needs: checkov
