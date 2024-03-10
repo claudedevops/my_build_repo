@@ -11,6 +11,6 @@ on:
 
 jobs:
   release:
-    uses: ./.github/workflows/release.yaml
+    uses: ./.github/workflows/apply.yaml
     with:
       target-env: ${{ inputs.environment }}
