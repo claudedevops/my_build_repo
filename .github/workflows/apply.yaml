@@ -28,20 +28,20 @@ jobs:
   deploy-dev:
     needs: choose_env
     runs-on: ubuntu-latest
-    if: ${{ needs.choose-env.outputs.selected-stage == 'dev' }}
+    if: ${{ needs.choose_env.outputs.selected-stage == 'dev' }}
     steps:
       - run: echo "Deploying to dev"
     
   deploy-stage:
     needs: choose_env
     runs-on: ubuntu-latest
-    if: ${{ needs.choose-env.outputs.selected-stage == 'stage' }}
+    if: ${{ needs.choose_env.outputs.selected-stage == 'stage' }}
     steps:
       - run: echo "Deploying to stage"
   
   deploy-prod:
     needs: choose_env
     runs-on: ubuntu-latest
-    if: ${{ needs.choose-env.outputs.selected-stage == 'prod' }}
+    if: ${{ needs.choose_env.outputs.selected-stage == 'prod' }}
     steps:
       - run: echo "Deploying to prod"
