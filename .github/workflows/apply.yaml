@@ -9,7 +9,7 @@ on:
 
 jobs:
   choose_env:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
     outputs:
       selected-stage: ${{ steps.select-environment.outputs.selected-stage }}
     steps:
