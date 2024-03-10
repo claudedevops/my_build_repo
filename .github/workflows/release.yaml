@@ -5,6 +5,7 @@ on:
     inputs:
       environment:
         type: environment
+        description: Select the environment
         required: true
         options: [ dev, stage, prod ]
 
