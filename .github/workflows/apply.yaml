@@ -13,15 +13,15 @@ jobs:
     outputs:
       selected-stage: ${{ steps.select-environment.outputs.selected-stage }}
     steps:
-      - name: select environment
+      - name: Choose environment
         id: select-environment  # an id is used to capture/access an output
         run: |
           if [ ${{ inputs.target-env }} == dev ]; then
-            echo "selected-stage=dev" >> "GITHUB_OUTPUT"
+            echo "selected-stage=dev" >> "$GITHUB_OUTPUT"
           elif [ ${{ inputs.target-env }} == stage ]; then
-            echo "selected-stage=stage" >> "GITHUB_OUTPUT"
+            echo "selected-stage=stage" >> "$GITHUB_OUTPUT"
           elif [ ${{ inputs.target-env }} == prod ]; then
-            echo "selected-stage=prod" >> "GITHUB_OUTPUT"
+            echo "selected-stage=prod" >> "$GITHUB_OUTPUT"
           else
             echo "Select a valid environment"
           fi
