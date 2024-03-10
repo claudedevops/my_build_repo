@@ -1,0 +1,47 @@
+name: apply
+
+on:
+  workflow_call:
+    inputs:
+      target-env:
+        required: true
+        type: string
+
+jobs:
+  choose_env:
+    runs-on: ubuntu-latest
+    outputs:
+      selected-stage: ${{ steps.select-environment.outputs.selected-stage }}
+    steps:
+      - name: select environment
+        id: select-environment  # an id is used to capture/access an output
+        run: |
+          if [ ${{ inputs.target-env }} == dev ]; then
+            echo "selected-stage=dev" >> "GITHUB_OUTPUT"
+          elif [ ${{ inputs.target-env }} == stage ]; then
+            echo "selected-stage=stage" >> "GITHUB_OUTPUT"
+          if [ ${{ inputs.target-env }} == prod ]; then
+            echo "selected-stage=prod" >> "GITHUB_OUTPUT"
+          else
+            echo "Select a valid environment"
+          fi
+  deploy-dev:
+    needs: choose_env
+    runs-on: ubuntu-latest
+    if: ${{ needs.choose-env.outputs.selected-stage == 'dev' }}
+    steps:
+      - run: echo "Deploying to dev"
+    
+  deploy-stage:
+    needs: choose_env
+    runs-on: ubuntu-latest
+    if: ${{ needs.choose-env.outputs.selected-stage == 'stage' }}
+    steps:
+      - run: echo "Deploying to stage"
+  
+  deploy-prod:
+    needs: choose_env
+    runs-on: ubuntu-latest
+    if: ${{ needs.choose-env.outputs.selected-stage == 'prod' }}
+    steps:
+      - run: echo "Deploying to prod"
