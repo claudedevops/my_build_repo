@@ -10,9 +10,7 @@ on:
 jobs:
   choose_env:
     runs-on: ubuntu-latest 
-    outputs:
-      selected-stage: ${{ steps.select-environment.outputs.selected-stage }}
-    steps:
+        steps:
       - name: Choose environment
         id: select-environment  # an id is used to capture/access an output
         run: |
@@ -25,6 +23,8 @@ jobs:
           else
             echo "Select a valid environment"
           fi
+    outputs:
+      selected-stage: ${{ steps.select-environment.outputs.selected-stage }}
   deploy-dev:
     needs: choose_env
     runs-on: ubuntu-latest
