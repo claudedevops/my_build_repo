@@ -27,21 +27,24 @@ jobs:
       selected-stage: ${{ steps.select-environment.outputs.selected-stage }}
   deploy-dev:
     needs: choose_env
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
     if: ${{ needs.choose_env.outputs.selected-stage == 'dev' }}
-    steps:
-      - run: echo "Deploying to dev"
+    uses: claudedevops/shared-workflows/.github/workflows/apply.yaml@main
+    #steps:
+      #- run: echo "Deploying to dev"
     
   deploy-stage:
     needs: choose_env
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
     if: ${{ needs.choose_env.outputs.selected-stage == 'stage' }}
-    steps:
-      - run: echo "Deploying to stage"
+    uses: claudedevops/shared-workflows/.github/workflows/apply.yaml@main
+    #steps:
+      #- run: echo "Deploying to stage"
   
   deploy-prod:
     needs: choose_env
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
     if: ${{ needs.choose_env.outputs.selected-stage == 'prod' }}
-    steps:
-      - run: echo "Deploying to prod"
+    uses: claudedevops/shared-workflows/.github/workflows/apply.yaml@main
+    #steps:
+      #- run: echo "Deploying to prod"
