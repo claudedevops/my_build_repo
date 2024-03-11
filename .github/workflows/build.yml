@@ -35,11 +35,24 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: test.tf
-      - run: terraform init
+      - name: plan
+        run: |
+          terraform init
+          terraform fmt
+          terraform validate
+          terraform plan
   apply:
     needs: plan
+    if: success()
     uses: ./.github/workflows/release.yaml
-  
+    #runs-on: ubuntu-latest
+    #strategy:
+      #fail-fast: false
+      #matrix:
+        #env: [ dev, stage, prod ]
+    #steps:
+      #- run: echo ${{ matrix.env }}
+    
   docker:
     runs-on: ubuntu-latest
     steps:
