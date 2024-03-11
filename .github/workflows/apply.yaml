@@ -10,7 +10,7 @@ on:
 jobs:
   choose_env:
     runs-on: ubuntu-latest 
-        steps:
+    steps:
       - name: Choose environment
         id: select-environment  # an id is used to capture/access an output
         run: |
